@@ -6,8 +6,6 @@
 </div>
 A small image based anime trivia API built with Typescript and ExpressJS.
 
-Build for Mazey in Animazing.
-
 ## Prerequisites
 + Rename `.env.example` to `.env`
 + You can change the port or leave it as **3000**
