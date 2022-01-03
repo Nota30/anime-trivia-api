@@ -1,0 +1,32 @@
+{
+  "name": "anime-trivia-api",
+  "version": "1.0.0",
+  "description": "A small image based anime trivia API built with Typescript and ExpressJS.",
+  "main": "lib/index.js",
+  "repository": "git@github.com:Nota30/anime-trivia-api.git",
+  "author": "Nota30",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "debug": "^4.3.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.12",
+    "@types/http-errors": "^1.8.0",
+    "@types/morgan": "^1.9.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1",
+    "rimraf": "^3.0.2"
+  }
+}
