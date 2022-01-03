@@ -1,4 +1,9 @@
 # Anime-trivia-api
+<div align="center">
+    <img 
+    style="border-style: solid; border-image: linear-gradient(45deg, turquoise, greenyellow) 1;" 
+    src = "https://i.imgur.com/UMyXzjTh.jpg"> 
+</div>
 A small image based anime trivia API built with Typescript and ExpressJS.
 
 Build for Mazey in Animazing.
