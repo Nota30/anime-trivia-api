@@ -1,0 +1,14 @@
+{
+  "name": "random-anime",
+  "version": "1.0.0",
+  "description": "generates random anime",
+  "main": "anime.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
