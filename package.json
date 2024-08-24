@@ -1,44 +1,19 @@
 {
   "name": "anime-trivia-api",
-  "version": "1.0.0",
-  "description": "A small image based anime trivia API built with Typescript and ExpressJS.",
-  "main": "lib/index.js",
+  "type": "module",
   "scripts": {
-    "clean": "rimraf lib/",
-    "copy-files": "copyfiles -u 1 src/**/*.pug src/**/*.css lib/",
-    "build": "yarn clean && tsc && yarn copy-files",
-    "start": "node ./lib/bin/index",
-    "lint": "eslint . --ext .ts --fix"
+    "dev": "tsx watch src/index.ts"
   },
-  "repository": "git@github.com:Nota30/anime-trivia-api.git",
-  "author": "Nota30",
-  "license": "MIT",
-  "private": false,
   "dependencies": {
-    "cookie-parser": "^1.4.6",
-    "debug": "^4.3.3",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.2",
-    "http-errors": "^2.0.0",
-    "morgan": "^1.10.0",
-    "node-kitsu": "^1.1.1",
-    "public-waifulist": "^0.0.2",
-    "pug": "^3.0.2",
-    "typescript": "^4.5.4"
+    "@hono/node-server": "^1.12.1",
+    "hono": "^4.5.8",
+    "undici": "^6.19.8"
   },
   "devDependencies": {
-    "@types/cookie-parser": "^1.4.2",
-    "@types/debug": "^4.1.5",
-    "@types/express": "^4.17.12",
-    "@types/http-errors": "^1.8.0",
-    "@types/morgan": "^1.9.2",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
-    "copyfiles": "^2.4.1",
-    "eslint": "^7.28.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.1",
-    "rimraf": "^3.0.2"
+    "@hono/eslint-config": "^0.0.6",
+    "@types/node": "^20.11.17",
+    "eslint": "^8.57.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.5.4"
   }
 }

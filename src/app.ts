@@ -1,43 +1,65 @@
-import express, { Request, Response } from 'express';
-import cookieParser from 'cookie-parser';
-import createError from 'http-errors';
-import logger from 'morgan';
-import path from 'path';
+import { request } from 'undici'
+import { fetchKitsu } from '@/utils'
 
-/**
- * Import the routes
- */
-import indexRouter from './routes/index';
-import randomRouter from './routes/random';
+const JIKAN_BASE_URL = 'https://api.jikan.moe/v4'
 
-const app = express();
+export type Anime = {
+  slug: string
+  name: string
+  image: string
+}
 
-// Views folder and uses Pug as the view engine
-app.set('views', path.join(__dirname, 'public/views'));
-app.set('view engine', 'pug');
-// To make the json data displayed pretty
-app.set('json spaces', 2);
+type Base = {
+  data: Data
+}
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+type Data = {
+  title: string
+  images: {
+    jpg: {
+      large_image_url: string
+    }
+  }
+}
 
-// Use the following endpoints for the paths
-app.use('/', indexRouter);
-app.use('/random', randomRouter);
+export const getRandomAnime = async (): Promise<Anime | undefined> => {
+  let anime: Anime
+  try {
+    const { statusCode, body } = await request(`${JIKAN_BASE_URL}/random/anime`)
 
-app.use(function (req, res, next) {
-    next(createError(404));
-});
+    if (statusCode !== 200) {
+      return
+    }
 
-app.use(function (err: createError.HttpError, req: Request, res: Response) {
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    const base = (await body.json()) as Base
+    const data = base.data
 
-    res.status(err.status || 500);
-    res.render('error');
-});
+    const kitsu = await fetchKitsu(data.title)
 
-export { app };
+    if (!kitsu) {
+      return
+    }
+
+    anime = {
+      slug: kitsu.slug,
+      name: kitsu.titles.en
+        ? kitsu.titles.en
+        : kitsu.titles.en_jp
+        ? kitsu.titles.en_jp
+        : data.title,
+      image: kitsu.posterImage
+        ? kitsu.posterImage.large
+          ? kitsu.posterImage.large
+          : data.images.jpg.large_image_url
+        : data.images.jpg.large_image_url,
+    }
+  } catch (err) {
+    throw new Error(`Resource couldn't be fetched: ${err}`)
+  }
+
+  if (!anime) {
+    return
+  }
+
+  return anime
+}
