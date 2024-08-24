@@ -1,8 +1,8 @@
 import { serve } from '@hono/node-server'
 import { prettyJSON } from 'hono/pretty-json'
 import { Hono } from 'hono'
-import { getRandomAnime } from '@/app'
-import { createErrorMessage } from '@/error'
+import { getRandomAnime } from './app.js'
+import { createErrorMessage } from './error.js'
 
 const PORT = 3000
 

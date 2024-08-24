@@ -2,7 +2,9 @@
   "name": "anime-trivia-api",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index"
   },
   "dependencies": {
     "@hono/node-server": "^1.12.1",

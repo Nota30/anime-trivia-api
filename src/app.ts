@@ -1,5 +1,5 @@
 import { request } from 'undici'
-import { fetchKitsu } from '@/utils'
+import { fetchKitsu } from './utils.js'
 
 const JIKAN_BASE_URL = 'https://api.jikan.moe/v4'
 
