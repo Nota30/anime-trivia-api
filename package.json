@@ -1,5 +1,11 @@
 {
   "name": "anime-trivia-api",
+  "version": "2.0.0",
+  "description": "A small image based anime trivia API built with Typescript and HonoJS.",
+  "main": "src/index",
+  "author": "Nota30",
+  "license": "MIT",
+  "repository": "git@github.com:Nota30/anime-trivia-api.git",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
