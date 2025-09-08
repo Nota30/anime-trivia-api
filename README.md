@@ -40,3 +40,5 @@ Using NPM:
 ```
 npm run build && npm run start
 ```
+
+Visit the endpoint `/random`
